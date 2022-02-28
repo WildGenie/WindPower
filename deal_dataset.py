@@ -153,7 +153,7 @@ class Data_Manager():
 
             for m in range(machine_len):  #所有风机全部加载
                 datas = read_csv(os.path.join(self.root, field[f], machine[f][m]) + '.csv')
-                print(os.path.join(self.root, field[f], machine[f][m]) + '.csv')
+                print(f'{os.path.join(self.root, field[f], machine[f][m])}.csv')
                 # 11*120+1 : 正数第11个小时30秒开始
                 # -2*120+1 : 倒数第2个小时结束（不包含最后2小时）
                 # 每一个时段由每小时的第30秒开始第3600秒结束，共120个时刻
@@ -348,7 +348,7 @@ class Data_Manager():
     def _check_file(self):  #
         for f in range(field_len):
             for m in range(machine_len):
-                file = os.path.join(self.root, field[f], machine[f][m]) + '.csv'
+                file = f'{os.path.join(self.root, field[f], machine[f][m])}.csv'
                 if not os.path.exists(file.encode('utf-8')):
                     return True
             file = os.path.join(self.root, field[f], 'weather.csv')

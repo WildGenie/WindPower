@@ -53,7 +53,7 @@ def visualize_prediction_compare(X, Y, Y_pre=None, dir_name='visualizations',png
     plt.legend()
     if not os.path.exists(dir_name):
         os.makedirs(dir_name)
-    plt.savefig(os.path.join(dir_name, png_name)+'.png')
+    plt.savefig(f'{os.path.join(dir_name, png_name)}.png')
     plt.close()
 
 
@@ -127,9 +127,7 @@ def cal_R():
     # 2个风场，每个风场25个风机，每个风机80个时段
     E1, E2 = (0.7 * m + 0.3 * n).reshape(2, 25, 80).mean(1)
 
-    # 公式 1
-    R = 100 / (1 + E1.sum() + E2.sum())
-    return R
+    return 100 / (1 + E1.sum() + E2.sum())
 
 
 
